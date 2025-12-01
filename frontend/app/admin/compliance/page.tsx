@@ -40,16 +40,13 @@ export default function AdminCompliancePage() {
   const handleApprove = async (type: string, id: string) => {
     try {
       await api.post(`/admin/compliance/${type}/${id}/approve`)
-      toast({
-        title: "Approved",
+      toast("Approved", {
         description: "Item has been approved successfully",
       })
       fetchComplianceData()
     } catch (error: any) {
-      toast({
-        title: "Error",
+      toast.error("Error", {
         description: error.response?.data?.message || "Failed to approve",
-        variant: "destructive",
       })
     }
   }
@@ -57,16 +54,13 @@ export default function AdminCompliancePage() {
   const handleReject = async (type: string, id: string) => {
     try {
       await api.post(`/admin/compliance/${type}/${id}/reject`)
-      toast({
-        title: "Rejected",
+      toast("Rejected", {
         description: "Item has been rejected",
       })
       fetchComplianceData()
     } catch (error: any) {
-      toast({
-        title: "Error",
+      toast.error("Error", {
         description: error.response?.data?.message || "Failed to reject",
-        variant: "destructive",
       })
     }
   }

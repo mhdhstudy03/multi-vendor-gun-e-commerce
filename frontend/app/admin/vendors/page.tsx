@@ -34,16 +34,13 @@ export default function AdminVendorsPage() {
   const handleApprove = async (vendorId: string) => {
     try {
       await api.post(`/admin/vendors/${vendorId}/approve`)
-      toast({
-        title: "Vendor Approved",
+      toast("Vendor Approved", {
         description: "The vendor has been approved successfully",
       })
       fetchVendors()
     } catch (error: any) {
-      toast({
-        title: "Error",
+      toast.error("Error", {
         description: error.response?.data?.message || "Failed to approve vendor",
-        variant: "destructive",
       })
     }
   }
@@ -51,16 +48,13 @@ export default function AdminVendorsPage() {
   const handleReject = async (vendorId: string) => {
     try {
       await api.post(`/admin/vendors/${vendorId}/reject`)
-      toast({
-        title: "Vendor Rejected",
+      toast("Vendor Rejected", {
         description: "The vendor has been rejected",
       })
       fetchVendors()
     } catch (error: any) {
-      toast({
-        title: "Error",
+      toast.error("Error", {
         description: error.response?.data?.message || "Failed to reject vendor",
-        variant: "destructive",
       })
     }
   }

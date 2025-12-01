@@ -26,16 +26,13 @@ export default function RegisterPage() {
     setLoading(true)
     try {
       await api.post("/auth/register", formData)
-      toast({
-        title: "Registration Successful",
+      toast("Registration Successful", {
         description: "Please check your email for verification",
       })
       router.push("/login")
     } catch (error: any) {
-      toast({
-        title: "Error",
+      toast.error("Error", {
         description: error.response?.data?.message || "Registration failed",
-        variant: "destructive",
       })
     } finally {
       setLoading(false)

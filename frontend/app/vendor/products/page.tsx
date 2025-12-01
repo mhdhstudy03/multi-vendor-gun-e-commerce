@@ -49,8 +49,7 @@ export default function VendorProductsPage() {
         price: parseFloat(formData.price),
         stock: parseInt(formData.stock),
       })
-      toast({
-        title: "Product Created",
+      toast("Product Created", {
         description: "Your product has been submitted for approval",
       })
       setDialogOpen(false)
@@ -64,10 +63,8 @@ export default function VendorProductsPage() {
       })
       fetchProducts()
     } catch (error: any) {
-      toast({
-        title: "Error",
+      toast.error("Error", {
         description: error.response?.data?.message || "Failed to create product",
-        variant: "destructive",
       })
     }
   }

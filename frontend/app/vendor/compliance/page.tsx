@@ -44,16 +44,13 @@ export default function VendorCompliancePage() {
       const formData = new FormData()
       formData.append("file", file)
       await api.post(`/vendors/compliance/licenses/${licenseId}/upload`, formData)
-      toast({
-        title: "License Uploaded",
+      toast("License Uploaded", {
         description: "Your license document has been uploaded successfully",
       })
       fetchCompliance()
     } catch (error: any) {
-      toast({
-        title: "Upload Failed",
+      toast.error("Upload Failed", {
         description: error.response?.data?.message || "Failed to upload license",
-        variant: "destructive",
       })
     }
   }

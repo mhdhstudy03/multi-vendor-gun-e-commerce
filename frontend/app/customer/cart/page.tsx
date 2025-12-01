@@ -58,10 +58,8 @@ export default function CartPage() {
 
   const handleCheckout = async () => {
     if (cart.length === 0) {
-      toast({
-        title: "Cart is empty",
+      toast.error("Cart is empty", {
         description: "Add items to your cart before checkout",
-        variant: "destructive",
       })
       return
     }
@@ -75,16 +73,13 @@ export default function CartPage() {
         })),
       })
       localStorage.removeItem("cart")
-      toast({
-        title: "Order Placed",
+      toast("Order Placed", {
         description: "Your order has been placed successfully",
       })
       router.push(`/customer/orders/${response.data.id}`)
     } catch (error: any) {
-      toast({
-        title: "Checkout Failed",
+      toast.error("Checkout Failed", {
         description: error.response?.data?.message || "Failed to place order",
-        variant: "destructive",
       })
     } finally {
       setLoading(false)

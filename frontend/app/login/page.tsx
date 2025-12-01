@@ -22,15 +22,12 @@ export default function LoginPage() {
     try {
       await api.post("/auth/send-otp", { email })
       setStep("otp")
-      toast({
-        title: "OTP Sent",
+      toast("OTP Sent", {
         description: "Please check your email for the verification code",
       })
     } catch (error: any) {
-      toast({
-        title: "Error",
+      toast.error("Error", {
         description: error.response?.data?.message || "Failed to send OTP",
-        variant: "destructive",
       })
     } finally {
       setLoading(false)
@@ -54,10 +51,8 @@ export default function LoginPage() {
         router.push("/customer")
       }
     } catch (error: any) {
-      toast({
-        title: "Error",
+      toast.error("Error", {
         description: error.response?.data?.message || "Invalid OTP",
-        variant: "destructive",
       })
     } finally {
       setLoading(false)

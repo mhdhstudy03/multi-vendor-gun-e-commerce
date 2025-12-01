@@ -36,16 +36,13 @@ export default function VendorSubscriptionPage() {
   const handleSubscribe = async (planId: string) => {
     try {
       await api.post("/vendors/subscription/subscribe", { planId })
-      toast({
-        title: "Subscription Updated",
+      toast("Subscription Updated", {
         description: "Your subscription has been updated successfully",
       })
       fetchSubscriptionData()
     } catch (error: any) {
-      toast({
-        title: "Subscription Failed",
+      toast.error("Subscription Failed", {
         description: error.response?.data?.message || "Failed to update subscription",
-        variant: "destructive",
       })
     }
   }
