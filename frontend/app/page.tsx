@@ -241,7 +241,6 @@ export default function Home() {
           </p>
           <form
             className="mt-4 flex flex-col sm:flex-row gap-3 justify-center"
-            onSubmit={(e) => e.preventDefault()}
           >
             <Input
               type="email"
